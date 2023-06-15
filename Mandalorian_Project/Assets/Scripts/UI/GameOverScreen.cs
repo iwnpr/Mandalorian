@@ -9,6 +9,7 @@ public class GameOverScreen : MonoBehaviour
 {
     [SerializeField] private Button _restartButton;
     [SerializeField] private Button _quitButton;
+    [SerializeField] private Button _mainMenuButton;
     [SerializeField] private Player _player;
 
     private CanvasGroup _gameOverGroup;
@@ -23,12 +24,14 @@ public class GameOverScreen : MonoBehaviour
         _player.Died += OnDied;
         _restartButton.onClick.AddListener(OnRestartBottomClick);
         _quitButton.onClick.AddListener(OnQuitBottomClick);
+        _mainMenuButton.onClick.AddListener(OnMainMenuBottomClick);
     }
     private void OnDisable()
     {
         _player.Died -= OnDied;
         _restartButton.onClick.RemoveListener(OnRestartBottomClick);
         _quitButton.onClick.RemoveListener(OnQuitBottomClick);
+        _mainMenuButton.onClick.AddListener(OnMainMenuBottomClick);
     }
     private void OnDied()
     {
@@ -44,6 +47,11 @@ public class GameOverScreen : MonoBehaviour
     private void OnQuitBottomClick()
     {
         Application.Quit();
+    }
+    private void OnMainMenuBottomClick()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(0);
     }
 
 

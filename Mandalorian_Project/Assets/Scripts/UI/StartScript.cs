@@ -9,7 +9,6 @@ public class StartScript : MonoBehaviour
 
     public void OnStartBottomClick()
     {
-
         SceneManager.LoadScene(1);
     }
     public void OnQuitBottomClick()
